@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Department;
-use App\Models\Product;
 use App\Models\Stock;
 use App\Models\Stock_item;
 use App\Models\StockSummary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class StockController extends Controller
 {
