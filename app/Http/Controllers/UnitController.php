@@ -16,6 +16,10 @@ class UnitController extends Controller
         //
     }
 
+    public function addUnit()
+    {
+        return view('backend.pages.unit.create', get_defined_vars());
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -59,7 +63,17 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ], [
+            'name.required' => 'Unit Name field is required.',
+        ]);
+
+        $unit = Unit::create([
+            'name' => $request->name,
+        ]);
+
+        return back()->with('success', 'Unit Data saved!');
     }
 
     /**

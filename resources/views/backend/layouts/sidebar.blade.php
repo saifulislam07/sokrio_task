@@ -192,12 +192,12 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link ">
+                            <a href="{{ route('addUnit') }}" class="nav-link ">
                                 <p>Unit</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link ">
+                            <a href="{{ route('addDepartment') }}" class="nav-link ">
                                 <p>Department</p>
                             </a>
                         </li>

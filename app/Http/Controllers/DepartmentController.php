@@ -16,6 +16,10 @@ class DepartmentController extends Controller
         //
     }
 
+    public function addDepartment()
+    {
+        return view('backend.pages.department.create', get_defined_vars());
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -59,7 +63,17 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ], [
+            'name.required' => 'Department Name field is required.',
+        ]);
+
+        $unit = Department::create([
+            'name' => $request->name,
+        ]);
+
+        return back()->with('success', 'Department Data saved!');
     }
 
     /**
