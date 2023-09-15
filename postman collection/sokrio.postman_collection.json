@@ -1,0 +1,465 @@
+{
+	"info": {
+		"_postman_id": "9e4b2bce-c54c-4164-b7e7-adf666ca71cc",
+		"name": "sokrio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20717961"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "saiful@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Saiful",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "saiful@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Brand",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|rHHIWhIXfReCrczyV0LABJUMtuCWLV4X67akvZjCfd8c0697",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Google",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-brand",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|rHHIWhIXfReCrczyV0LABJUMtuCWLV4X67akvZjCfd8c0697",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Book",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-category",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Department",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|rHHIWhIXfReCrczyV0LABJUMtuCWLV4X67akvZjCfd8c0697",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Accounts",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-department",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-department"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|rHHIWhIXfReCrczyV0LABJUMtuCWLV4X67akvZjCfd8c0697",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Box",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-unit",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-unit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|rHHIWhIXfReCrczyV0LABJUMtuCWLV4X67akvZjCfd8c0697",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "iPhone 14 Pro Max",
+							"type": "text"
+						},
+						{
+							"key": "sku",
+							"value": "abcd",
+							"type": "text"
+						},
+						{
+							"key": "brand_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "category_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "description here",
+							"type": "text"
+						},
+						{
+							"key": "usp",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-product",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|rHHIWhIXfReCrczyV0LABJUMtuCWLV4X67akvZjCfd8c0697",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"challan_no\": \"CH12345\",\r\n    \"department_id\": 1,\r\n    \"stock_items\": [\r\n        {\r\n          \r\n            \"SKU\": \"ABC123\",\r\n            \"category_id\": 1,\r\n            \"product_id\": 1,\r\n            \"quantity\": 10\r\n        },\r\n        {\r\n           \r\n            \"SKU\": \"ABC124\",\r\n            \"category_id\": 2,\r\n            \"product_id\": 2,\r\n            \"quantity\": 5\r\n        },\r\n        {\r\n           \r\n            \"SKU\": \"ABC125\",\r\n            \"category_id\": 3,\r\n            \"product_id\": 3,\r\n            \"quantity\": 8\r\n        } \r\n    ]\r\n  \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-stock",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sale",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|rHHIWhIXfReCrczyV0LABJUMtuCWLV4X67akvZjCfd8c0697",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pay\": 5000,\r\n    \"remarks\": \"sales note here\",\r\n    \"sale_items\": [\r\n        {\r\n           \"unit_id\": 1,\r\n            \"category_id\": 1,\r\n            \"product_id\": 1,\r\n            \"sale_price\": 300,\r\n            \"quantity\": 11\r\n        },\r\n        {\r\n            \"unit_id\": 1,\r\n            \"category_id\": 1,\r\n            \"product_id\": 1,\r\n            \"sale_price\": 200,\r\n            \"quantity\": 19\r\n        },\r\n        {\r\n           \"unit_id\": 1,\r\n            \"category_id\": 1,\r\n            \"product_id\": 1,\r\n            \"sale_price\": 600,\r\n            \"quantity\": 10\r\n        } ,\r\n           {\r\n           \"unit_id\": 2,\r\n            \"category_id\": 1,\r\n            \"product_id\": 2,\r\n            \"sale_price\": 500,\r\n            \"quantity\": 16\r\n        }\r\n    ]\r\n  \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-sale",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-sale"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "sokrioToken",
+			"value": "5|JiAvr7fq69cQVrKE21lRMAQFzNnPvxAdz8BncKbe1fa04139"
+		}
+	]
+}
