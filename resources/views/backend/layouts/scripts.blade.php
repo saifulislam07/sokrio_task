@@ -39,8 +39,15 @@
 <!-- Select2 -->
 <script src="{{ asset('backend/assets/plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- Bootstrap4 Duallistbox -->
-<script src="{{ asset('backend/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}">
+</script>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <!-- InputMask -->
+{{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
 
 <script src="{{ asset('backend/assets/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
 <!-- date-range-picker -->
@@ -79,9 +86,29 @@
         $('#search_filter').submit();
     }
 </script>
-
 <script>
-    $(document).on('click', '.delete_row', function (e) {
+    // // success message popup notification
+    // @if (Session::has('success'))
+    //     toastr.success("{{ Session::get('success') }}");
+    // @endif
+
+    // // info message popup notification
+    // @if (Session::has('info'))
+    //     toastr.info("{{ Session::get('info') }}");
+    // @endif
+
+    // // warning message popup notification
+    // @if (Session::has('warning'))
+    //     toastr.warning("{{ Session::get('warning') }}");
+    // @endif
+
+    // // error message popup notification
+    // @if (Session::has('error'))
+    //     toastr.error("{{ Session::get('error') }}");
+    // @endif
+</script>
+<script>
+    $(document).on('click', '.delete_row', function(e) {
         e.preventDefault();
         let delete_url = $(this).attr('delete_route');
         let delete_id = $(this).attr('delete_id');
@@ -102,7 +129,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function (data) {
+                    success: function(data) {
                         //console.log(data.code);
                         if (data.code == 203) {
                             Swal.fire(
@@ -130,7 +157,7 @@
                         // )
 
                     },
-                    error: function (data) {
+                    error: function(data) {
                         alert(data.responseText);
                     }
                 });
@@ -139,7 +166,7 @@
 
     });
 
-    $('#systemDatatable').on('switchChange.bootstrapSwitch', 'input[name="my-checkbox"]', function (event, state) {
+    $('#systemDatatable').on('switchChange.bootstrapSwitch', 'input[name="my-checkbox"]', function(event, state) {
         let status_url = $(this).attr('status_route');
 
         Swal.fire({
@@ -159,7 +186,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function (data) {
+                    success: function(data) {
                         // console.log(data.code);
                         if (data.code == 203) {
                             Swal.fire(
@@ -180,7 +207,7 @@
                             })
                         }
                     },
-                    error: function (data) {
+                    error: function(data) {
                         alert(data.responseText);
                     }
                 });
@@ -199,7 +226,7 @@
 
 
 
-    $(function () {
+    $(function() {
         //Initialize Select2 Elements
         $('.select2').select2()
 
@@ -254,21 +281,23 @@
         })
         //Date range as a button
         $('#daterange-btn').daterangepicker({
-            ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
-                    .endOf('month')
-                ]
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
+                            'month')
+                        .endOf('month')
+                    ]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
             },
-            startDate: moment().subtract(29, 'days'),
-            endDate: moment()
-        },
-            function (start, end) {
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            function(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
+                    'MMMM D, YYYY'))
             }
         )
 
@@ -285,18 +314,18 @@
         //color picker with addon
         $('.my-colorpicker2').colorpicker()
 
-        $('.my-colorpicker2').on('colorpickerChange', function (event) {
+        $('.my-colorpicker2').on('colorpickerChange', function(event) {
             $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
         })
 
-        $("input[data-bootstrap-switch]").each(function () {
+        $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
 
     })
     $("#datepicker").datepicker();
     // BS-Stepper Init
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         window.stepper = new Stepper(document.querySelector('.bs-stepper'))
     })
 </script>

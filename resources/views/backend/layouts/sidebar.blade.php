@@ -202,17 +202,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link ">
+                            <a href="{{ route('addBrand') }}" class="nav-link ">
                                 <p>Brand</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link ">
+                            <a href="{{ route('addCategory') }}" class="nav-link ">
                                 <p>Category</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link ">
+                            <a href="{{ route('addProduct') }}" class="nav-link ">
                                 <p>Product</p>
                             </a>
                         </li>
@@ -229,8 +229,13 @@
 
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link ">
+                                <a href="{{ route('addStock') }}" class="nav-link ">
                                     <p>Add Stock</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('currentstock') }}" class="nav-link ">
+                                    <p>Current Stock</p>
                                 </a>
                             </li>
                         </ul>
@@ -246,7 +251,7 @@
 
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link ">
+                                <a href="{{ route('newSale') }}" class="nav-link ">
                                     <p>New Sale</p>
                                 </a>
                             </li>

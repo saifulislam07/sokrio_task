@@ -69,11 +69,13 @@ class DepartmentController extends Controller
             'name.required' => 'Department Name field is required.',
         ]);
 
-        $unit = Department::create([
+        $department = Department::create([
             'name' => $request->name,
         ]);
 
-        return back()->with('success', 'Department Data saved!');
+        // toastr()->success('Have fun storming the castle!', 'Miracle Max Says');
+        session()->put('success', 'Department Successfully Created.');
+        return back();
     }
 
     /**

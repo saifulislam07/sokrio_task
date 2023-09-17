@@ -14,7 +14,7 @@
 
 <body class="sidebar-mini skin-purple-light sidebar-mini layout-fixed  text-sm">
 
-
+    @include('backend.layouts.alertmessage')
     @include('backend.layouts.header')
     @include('backend.layouts.sidebar')
     <div class="content-wrapper">
@@ -27,7 +27,7 @@
         </section>
     </div>
 
-
+    @include('backend.layouts.alertmessage')
     @include('backend.layouts.footer')
     @include('backend.layouts.scripts')
     @yield('scripts')

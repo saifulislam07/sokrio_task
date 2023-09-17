@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -16,6 +18,13 @@ class ProductController extends Controller
         //
     }
 
+
+    public function addProduct()
+    {
+        $brand = Brand::select('id', 'name')->get();
+        $category = Category::select('id', 'name')->get();
+        return view('backend.pages.product.create', get_defined_vars());
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -69,7 +78,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'SKU' => 'required',
+            'brand_id' => 'required',
+            'category_id' => 'required',
+        ], [
+            'name.required' => 'Product Name field is required.',
+            'SKU.required' => 'SKU  field is required.',
+            'brand_id.required' => 'Brand field is required.',
+            'category_id.required' => 'Category field is required.',
+        ]);
+
+        $product = Product::create([
+            'name' => $request->name,
+            'SKU' => $request->SKU,
+            'brand_id' => $request->brand_id,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'USP' => $request->USP,
+        ]);
+        session()->put('success', 'Product Successfully Created.');
+        return back();
     }
 
     /**

@@ -72,8 +72,8 @@ class UnitController extends Controller
         $unit = Unit::create([
             'name' => $request->name,
         ]);
-
-        return back()->with('success', 'Unit Data saved!');
+        session()->put('success', 'Unit Successfully Created.');
+        return back();
     }
 
     /**

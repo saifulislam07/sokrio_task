@@ -16,6 +16,11 @@ class BrandController extends Controller
         //
     }
 
+    public function addBrand()
+    {
+        return view('backend.pages.brand.create', get_defined_vars());
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -59,7 +64,17 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ], [
+            'name.required' => 'Brand Name field is required.',
+        ]);
+
+        $unit = Brand::create([
+            'name' => $request->name,
+        ]);
+        session()->put('success', 'Brand Successfully Created.');
+        return back();
     }
 
     /**

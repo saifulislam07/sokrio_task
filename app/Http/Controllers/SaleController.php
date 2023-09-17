@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Sale;
 use App\Models\Sales_item;
 use App\Models\StockSummary;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +17,6 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -23,12 +24,94 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        $unit = Unit::select('id', 'name')->get();
+        $products = Product::select('id', 'name')->get();
+
+        return view('backend.pages.sale.create', get_defined_vars());
     }
 
     /**
      * Store a newly created resource in storage.
      */
+
+
+    public function saveSale(Request $request)
+    {
+
+        try {
+
+            // dd($request->all());
+            $productId = $request->proName;
+            $uniID = $request->uniid;
+            $qty = $request->qty;
+            $unitprice = $request->unitprice;
+            $total = $request->total;
+
+
+            $totalQuantity = 0; // Initialize the total quantity
+            $totalUnitprice = 0; // Initialize the total unit parice
+            $totalPayable = 0; // Initialize the total payable
+
+            for ($i = 0; $i < count($qty); $i++) {
+                $quantity = $qty[$i];
+                $totalQuantity += $quantity;
+
+                $unitprice = $unitprice[$i];
+                $totalUnitprice += $unitprice;
+
+                $total = $total[$i];
+                $totalPayable += $total;
+            }
+
+            $sale = new Sale();
+
+
+            $sale->total_quantity = $totalQuantity;
+            $sale->total_sale_price = $totalUnitprice;
+            $sale->total_payable = $totalPayable;
+            $sale->grand_total = $totalPayable;
+            $sale->pay = $request->paid_amount;
+            $sale->remarks = $request->narration;
+            $sale->due = $totalPayable - $request->paid_amount;
+            $sale->save();
+
+
+            for ($i = 0; $i < count($productId); $i++) {
+                // Create a new stock entry for each product
+                $catId = Product::where('id', $productId[$i])->first();
+                $sale_item = new Sales_item();
+                $sale_item->sale_id = $sale->id;
+                $sale_item->category_id = $catId->category_id;
+                $sale_item->unit_id = $uniID[$i];
+                $sale_item->product_id = $productId[$i];
+                $sale_item->quantity = $qty[$i];
+                $sale_item->sale_price = $unitprice[$i];
+                $sale_item->payable = $total[$i];
+                $sale_item->save();
+
+
+                $checkProduct = StockSummary::where('product_id', $productId[$i])->first();
+                if ($checkProduct) {
+                    StockSummary::where('product_id', $productId[$i])->decrement('quantity', $qty[$i]);
+                } else {
+                    $stockSummary = new StockSummary();
+                    $stockSummary->category_id = $catId->category_id;
+                    $stockSummary->product_id = $productId[$i];
+                    $stockSummary->quantity = $qty[$i];
+                    $stockSummary->save();
+                }
+            }
+
+
+            session()->put('success', 'Sale Successfully Added.');
+            return back();
+        } catch (\Throwable $th) {
+            session()->put('warning', 'Something Wrong, Please try again.');
+            return back();
+        }
+    }
+
+
     public function store(Request $request)
     {
 

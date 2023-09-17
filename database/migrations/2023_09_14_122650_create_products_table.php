@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('brand_id');
             $table->string('category_id');
             $table->longText('description')->nullable();
-            $table->string('USP')->nullable();
+            $table->longText('USP')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,11 @@ class CategoryController extends Controller
         //
     }
 
+    public function addCategory()
+    {
+        return view('backend.pages.category.create', get_defined_vars());
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -59,7 +64,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ], [
+            'name.required' => 'Category Name field is required.',
+        ]);
+
+        $unit = Category::create([
+            'name' => $request->name,
+        ]);
+        session()->put('success', 'Category Successfully Created.');
+        return back();
     }
 
     /**
